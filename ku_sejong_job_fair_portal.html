@@ -1,0 +1,958 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026 고려대학교 세종캠퍼스 취업박람회 공식 포털</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts (Noto Sans KR & Playfair Display) -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Playfair+Display:ital,wght@0,600;0,800;1,700&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        kucrimson: '#8A1538',     /* 고려대학교 공식 시그니처 크림슨 */
+                        kucrimsondark: '#5C0F25', /* 딥 크림슨 */
+                        kugold: '#C49A45',        /* 고급스러운 캠퍼스 골드 */
+                        kuivory: '#FAF7F2',       /* 부드러운 아이보리 톤 */
+                        kugray: '#4B5563',
+                    },
+                    fontFamily: {
+                        sans: ['Noto Sans KR', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #FAF7F2;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #8A1538;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #C49A45;
+        }
+        @keyframes pulse-accent {
+            0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(196, 154, 69, 0.7); }
+            50% { transform: scale(1.03); box-shadow: 0 0 0 10px rgba(196, 154, 69, 0); }
+        }
+        .pulse-accent-btn {
+            animation: pulse-accent 2s infinite ease-in-out;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-6px); }
+        }
+        .float-tiger {
+            animation: float 4s infinite ease-in-out;
+        }
+    </style>
+</head>
+<body class="bg-[#FDFDFB] font-sans text-stone-800 min-h-screen flex flex-col antialiased">
+
+    <!-- Top Crimson Header Navigation -->
+    <header class="bg-kucrimson text-white sticky top-0 z-40 shadow-md border-b border-kugold/40">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Brand Logos with fallback image rules -->
+                <div class="flex items-center space-x-3">
+                    <a href="#" class="flex items-center gap-3">
+                        <img src="globalsymbol_koreng2_large_2.gif" alt="고려대학교 세종캠퍼스 로고" class="h-12 w-auto bg-white p-1 rounded-lg" onerror="this.onerror=null; this.src='https://placehold.co/400x100/8A1538/ffffff?text=KOREA+UNIVERSITY';" />
+                        <div class="border-l border-white/20 pl-3 hidden sm:block">
+                            <h1 class="text-sm font-black tracking-tight text-white flex items-center gap-1.5">
+                                <span>대학일자리플러스센터</span>
+                                <span class="bg-kugold text-kucrimson text-[9px] font-bold px-1.5 py-0.5 rounded-sm">세종RISE사업 연계</span>
+                            </h1>
+                            <p class="text-[9px] text-rose-200 uppercase tracking-widest font-semibold">Sejong Career Development Portal</p>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Desktop Navigations -->
+                <nav class="hidden lg:flex space-x-8">
+                    <a href="#about" class="text-white hover:text-kugold font-bold text-sm transition-colors py-2">박람회 안내</a>
+                    <a href="#program-zones" class="text-white hover:text-kugold font-bold text-sm transition-colors py-2">핵심 3대 행사관</a>
+                    <a href="#company-directory" class="text-white hover:text-kugold font-bold text-sm transition-colors py-2">참가기업 검색</a>
+                    <a href="#floor-plan" class="text-white hover:text-kugold font-bold text-sm transition-colors py-2">행사장 동선안내</a>
+                    <a href="#my-pass" class="text-white hover:text-kugold font-bold text-sm transition-colors py-2 flex items-center gap-1">
+                        <i class="fa-solid fa-ticket text-kugold text-xs"></i>
+                        <span>내 모바일 PASS</span>
+                    </a>
+                </nav>
+
+                <!-- Quick Reservation Trigger with Benefit Badge -->
+                <div class="flex items-center space-x-3">
+                    <div class="flex flex-col items-end">
+                        <button onclick="openRegisterModal()" class="bg-kugold hover:bg-yellow-600 text-kucrimson font-black text-xs sm:text-sm px-4 py-2.5 rounded-xl shadow-lg transition-transform transform active:scale-95 flex items-center gap-2">
+                            <i class="fa-solid fa-file-pen"></i>
+                            <span>사전 참가 신청</span>
+                        </button>
+                        <span class="text-[9px] text-yellow-300 font-bold mt-1 tracking-tight hidden sm:block">
+                            # 사전신청 후, 박람회 참여시 e-STAMP 1개 자동추가
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Banner (Based on official Poster: image_384e23.jpg) -->
+    <section id="about" class="relative bg-gradient-to-r from-kucrimsondark to-[#3d0815] text-white overflow-hidden py-12 lg:py-20 shadow-xl border-b-4 border-kugold">
+        <!-- Structural BG Overlays -->
+        <div class="absolute bottom-0 right-0 left-0 h-24 bg-gradient-to-t from-black/40 to-transparent pointer-events-none"></div>
+        <div class="absolute -top-32 -left-32 w-96 h-96 bg-kugold/10 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute right-10 top-10 w-96 h-96 bg-kucrimson/30 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+                
+                <!-- Left Details Banner Text -->
+                <div class="lg:col-span-7 space-y-6">
+                    <div class="flex flex-wrap items-center gap-2">
+                        <span class="bg-white/10 text-white text-xs font-semibold px-3 py-1 rounded-full border border-white/20">2026학년도 고용노동부 대학일자리플러스사업</span>
+                        <span class="bg-kugold text-kucrimson text-[10px] font-black px-3 py-1 rounded-full uppercase tracking-widest">세종특별자치시 RISE사업 일환</span>
+                    </div>
+
+                    <!-- Main Catchphrase Title -->
+                    <div class="space-y-1">
+                        <span class="text-lg sm:text-xl font-bold text-kugold block font-serif tracking-widest">KOREA UNIVERSITY SEJONG</span>
+                        <h2 class="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-none drop-shadow-lg">
+                            2026 고려대학교<br>
+                            <span class="text-kugold">세종캠퍼스 취업박람회</span>
+                        </h2>
+                        <p class="text-lg font-bold text-rose-200 mt-2 font-serif flex items-center gap-2">
+                            <span>[ 세종 지역청년 채용·컨설팅 페스티벌 ]</span>
+                        </p>
+                    </div>
+
+                    <!-- Slogan from Image -->
+                    <p class="text-base sm:text-lg text-stone-200 font-medium border-l-4 border-kugold pl-4 leading-relaxed max-w-2xl">
+                        "세종 지역청년의 내일을 열다, 취업 성공을 향한 힘찬 도약!"
+                    </p>
+
+                    <!-- Poster Specs Badge Box -->
+                    <div class="bg-black/40 rounded-2xl p-5 border border-white/10 max-w-2xl grid grid-cols-1 md:grid-cols-3 gap-4 backdrop-blur-sm shadow-inner">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-10 h-10 rounded-xl bg-kugold/20 flex items-center justify-center text-kugold">
+                                <i class="fa-solid fa-calendar-days text-lg"></i>
+                            </div>
+                            <div>
+                                <p class="text-[9px] text-stone-400 font-bold uppercase tracking-wider">일정</p>
+                                <p class="text-xs font-extrabold text-white">2026.09.07(월) ~ 09.08(화)</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <div class="w-10 h-10 rounded-xl bg-rose-500/20 flex items-center justify-center text-rose-300">
+                                <i class="fa-solid fa-map-location-dot text-lg"></i>
+                            </div>
+                            <div>
+                                <p class="text-[9px] text-stone-400 font-bold uppercase tracking-wider">장소</p>
+                                <p class="text-xs font-extrabold text-white">고려대학교 세종캠퍼스 체육관</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <div class="w-10 h-10 rounded-xl bg-emerald-500/20 flex items-center justify-center text-emerald-300">
+                                <i class="fa-solid fa-users text-lg"></i>
+                            </div>
+                            <div>
+                                <p class="text-[9px] text-stone-400 font-bold uppercase tracking-wider">대상</p>
+                                <p class="text-xs font-extrabold text-white">취업에 관심 있는 세종 지역청년</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Required Benefit Highlight Card with Bounce animation -->
+                    <div class="bg-[#FAF7F2] text-kucrimson border-2 border-kugold/80 rounded-2xl p-4 max-w-2xl flex items-center gap-4 shadow-xl pulse-accent-btn">
+                        <div class="w-12 h-12 rounded-xl bg-kucrimson text-kugold flex items-center justify-center shadow-md shrink-0">
+                            <i class="fa-solid fa-stamp text-2xl"></i>
+                        </div>
+                        <div>
+                            <span class="text-[9px] bg-kucrimson text-white font-extrabold px-2 py-0.5 rounded-sm uppercase tracking-wider">PRE-REGISTRATION BENEFIT</span>
+                            <p class="text-xs sm:text-sm font-black mt-1">
+                                # 사전신청 후, 박람회 참여시 e-STAMP 1개 자동추가
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Mascot Illustration Panel -->
+                <div class="lg:col-span-5 flex flex-col items-center justify-center relative py-4">
+                    <div class="absolute w-80 h-80 rounded-full border-2 border-white/5 bg-white/[0.01] flex items-center justify-center backdrop-blur-sm pointer-events-none">
+                        <div class="w-64 h-64 rounded-full border border-kugold/10"></div>
+                    </div>
+
+                    <!-- Cute KU Tiger Mascot SVG (Inspired by image_384e23.jpg) -->
+                    <div class="w-64 h-64 float-tiger relative z-10">
+                        <svg viewBox="0 0 200 200" class="w-full h-full drop-shadow-2xl">
+                            <circle cx="100" cy="100" r="90" fill="none" stroke="#C49A45" stroke-width="2" stroke-dasharray="6,6" />
+                            <!-- Tiger Main Face Shape -->
+                            <path d="M 50,55 C 20,40 10,70 30,100 C 40,115 50,130 65,145 C 80,160 120,160 135,145 C 150,130 160,115 170,100 C 190,70 180,40 150,55 Z" fill="#E87722" stroke="#1A0307" stroke-width="4"/>
+                            <!-- Ears -->
+                            <polygon points="50,55 32,22 72,43" fill="#E87722" stroke="#1A0307" stroke-width="4"/>
+                            <polygon points="51,51 40,30 65,42" fill="#FFFFFF" />
+                            <polygon points="150,55 168,22 128,43" fill="#E87722" stroke="#1A0307" stroke-width="4"/>
+                            <polygon points="149,51 160,30 135,42" fill="#FFFFFF" />
+                            <!-- Stripes -->
+                            <path d="M 32,80 L 55,83 M 34,95 L 58,94" stroke="#1A0307" stroke-width="5" stroke-linecap="round"/>
+                            <path d="M 168,80 L 145,83 M 166,95 L 142,94" stroke="#1A0307" stroke-width="5" stroke-linecap="round"/>
+                            <path d="M 90,52 L 100,75 L 110,52" fill="#1A0307" />
+                            <!-- White Cheek patches -->
+                            <ellipse cx="60" cy="120" rx="20" ry="15" fill="#FFFFFF" stroke="#1A0307" stroke-width="3" />
+                            <ellipse cx="140" cy="120" rx="20" ry="15" fill="#FFFFFF" stroke="#1A0307" stroke-width="3" />
+                            <!-- Mascot Eyes -->
+                            <path d="M 60,95 Q 75,80 85,95 Z" fill="#FFFFFF" stroke="#1A0307" stroke-width="4"/>
+                            <ellipse cx="72" cy="91" rx="6" ry="4" fill="#1A0307" />
+                            <circle cx="74" cy="89" r="2" fill="#FFFFFF" />
+                            <path d="M 140,95 Q 125,80 115,95 Z" fill="#FFFFFF" stroke="#1A0307" stroke-width="4"/>
+                            <ellipse cx="128" cy="91" rx="6" ry="4" fill="#1A0307" />
+                            <circle cx="130" cy="89" r="2" fill="#FFFFFF" />
+                            <!-- Snout & Mouth -->
+                            <ellipse cx="100" cy="115" rx="14" ry="10" fill="#FFFFFF" stroke="#1A0307" stroke-width="3" />
+                            <polygon points="94,110 106,110 100,116" fill="#1A0307" />
+                            <path d="M 92,120 Q 100,128 108,120" fill="none" stroke="#1A0307" stroke-width="3" stroke-linecap="round" />
+                            <!-- Crest Shield -->
+                            <path d="M 90,140 L 110,140 L 115,155 L 100,165 L 85,155 Z" fill="#8A1538" stroke="#1A0307" stroke-width="2" />
+                            <text x="100" y="156" font-family="'Noto Sans KR', sans-serif" font-weight="900" font-size="14" fill="#C49A45" text-anchor="middle">K</text>
+                        </svg>
+                    </div>
+
+                    <!-- Direct Application QR Layout -->
+                    <div class="bg-white p-4 rounded-2xl shadow-xl mt-6 border border-stone-200/60 text-center max-w-[200px] relative z-10">
+                        <div class="w-32 h-32 bg-stone-100 rounded-xl mx-auto flex flex-col items-center justify-center border-2 border-dashed border-stone-300">
+                            <i class="fa-solid fa-qrcode text-4xl text-kucrimson animate-pulse mb-1"></i>
+                            <span class="text-[10px] text-stone-400 font-bold">사전신청 QR</span>
+                        </div>
+                        <p class="text-[10px] text-stone-600 font-black mt-2">스마트폰 카메라 촬영 즉시 간편 예약 이동</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Central Content Area: Core 3-Column Program Grid (White Background) -->
+    <section id="program-zones" class="bg-white py-16 border-b border-stone-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-12 space-y-3">
+                <span class="bg-rose-50 text-kucrimson font-black text-xs px-3 py-1 rounded-full border border-rose-200/50 uppercase tracking-widest">Core Exhibition Zones</span>
+                <h3 class="text-3xl font-black text-stone-800 tracking-tight">행사관 중심의 공간 및 구성 안내</h3>
+                <p class="text-sm text-stone-500">본 취업박람회는 세종특별자치시 거주 미취업 청년 및 본교생들의 실전 구직 매칭에 최적화된 3대 특화형 행사관을 운영합니다.</p>
+            </div>
+
+            <!-- Crimson Border 3-Column Card Cells -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Cell 1: 채용상담관 -->
+                <div class="bg-white rounded-2xl border-2 border-kucrimson/30 hover:border-kucrimson p-6 sm:p-8 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
+                    <div class="space-y-4">
+                        <div class="w-14 h-14 rounded-2xl bg-[#FAF7F2] text-kucrimson group-hover:bg-kucrimson group-hover:text-white flex items-center justify-center text-2xl transition-all duration-300 shadow-sm border border-kucrimson/10">
+                            <i class="fa-solid fa-handshake-simple"></i>
+                        </div>
+                        <h4 class="text-xl font-bold text-stone-800">1. 채용상담관 & 채용설명회</h4>
+                        <p class="text-xs text-stone-500 leading-relaxed min-h-[50px]">
+                            대기업, 중견기업, 공기업, 외국계 및 해외 취업 등 30개 이상 우수 기업 인사담당자와의 1:1 맞춤형 밀착 상담 및 채용 전형 설명회를 제공합니다.
+                        </p>
+                    </div>
+                    <div class="mt-6 border-t border-stone-100 pt-4 flex items-center justify-between text-xs font-bold text-kucrimson">
+                        <span>체육관 전용 부스 가동</span>
+                        <i class="fa-solid fa-arrow-right-long group-hover:translate-x-1.5 transition-transform"></i>
+                    </div>
+                </div>
+
+                <!-- Cell 2: 컨설팅 & 멘토링관 -->
+                <div class="bg-white rounded-2xl border-2 border-kucrimson/30 hover:border-kucrimson p-6 sm:p-8 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
+                    <div class="space-y-4">
+                        <div class="w-14 h-14 rounded-2xl bg-[#FAF7F2] text-kucrimson group-hover:bg-kucrimson group-hover:text-white flex items-center justify-center text-2xl transition-all duration-300 shadow-sm border border-kucrimson/10">
+                            <i class="fa-solid fa-graduation-cap"></i>
+                        </div>
+                        <h4 class="text-xl font-bold text-stone-800">2. 진로·취업 컨설팅 & 동문 멘토링</h4>
+                        <p class="text-xs text-stone-500 leading-relaxed min-h-[50px]">
+                            전문 컨설턴트와의 심도 높은 진로·취업 상담과 함께, 다양한 산업계에 진출한 졸업생 동문 선배들의 실전 직무 경험 전수와 로드맵 멘토링을 제공합니다.
+                        </p>
+                    </div>
+                    <div class="mt-6 border-t border-stone-100 pt-4 flex items-center justify-between text-xs font-bold text-kucrimson">
+                        <span>컨설팅 특별 구역 연계</span>
+                        <i class="fa-solid fa-arrow-right-long group-hover:translate-x-1.5 transition-transform"></i>
+                    </div>
+                </div>
+
+                <!-- Cell 3: 이벤트관 -->
+                <div class="bg-white rounded-2xl border-2 border-kucrimson/30 hover:border-kucrimson p-6 sm:p-8 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
+                    <div class="space-y-4">
+                        <div class="w-14 h-14 rounded-2xl bg-[#FAF7F2] text-kucrimson group-hover:bg-kucrimson group-hover:text-white flex items-center justify-center text-2xl transition-all duration-300 shadow-sm border border-kucrimson/10">
+                            <i class="fa-solid fa-wand-magic-sparkles"></i>
+                        </div>
+                        <h4 class="text-xl font-bold text-stone-800">3. 취업 지원 이벤트관</h4>
+                        <p class="text-xs text-stone-500 leading-relaxed min-h-[50px]">
+                            퍼스널 컬러 진단검사, 면접 이미지 메이킹 & 사진 촬영, 직무 타로 및 음료 교환용 커피 트럭 등 학생들의 능동적 부스 참여를 유도하는 유익한 프로그램들로 가득합니다.
+                        </p>
+                    </div>
+                    <div class="mt-6 border-t border-stone-100 pt-4 flex items-center justify-between text-xs font-bold text-kucrimson">
+                        <span>체육관 서브 이벤트 타운</span>
+                        <i class="fa-solid fa-arrow-right-long group-hover:translate-x-1.5 transition-transform"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Company Search Widget (30+ Companies from KU Sejong RFP target) -->
+    <section id="company-directory" class="bg-[#FAF7F2] py-16 border-b border-stone-200/60">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-8">
+                <div class="space-y-2">
+                    <span class="bg-kucrimson text-white text-[10px] font-black px-2.5 py-0.5 rounded uppercase tracking-wider">Enterprise Directory</span>
+                    <h3 class="text-2xl font-black text-stone-800 tracking-tight">참가 확정기업 통합 릴리즈 및 사전조회</h3>
+                    <p class="text-xs text-stone-500 max-w-xl">대기업·공공기관 등 30개사 이상의 예약 현황과 직무를 카테고리별로 필터링하여 사전 예약할 수 있습니다.</p>
+                </div>
+                
+                <!-- Search & Filters -->
+                <div class="flex flex-wrap gap-2 items-center">
+                    <div class="relative min-w-[200px]">
+                        <input type="text" id="search-company" oninput="filterCompanies()" placeholder="기업명 또는 직무 검색..." class="w-full text-xs border border-stone-200 rounded-xl px-4 py-2.5 pl-9 focus:outline-none focus:ring-2 focus:ring-kucrimson bg-white">
+                        <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-3 text-stone-400 text-xs"></i>
+                    </div>
+                    <div class="flex bg-white p-1 rounded-xl border border-stone-200">
+                        <button onclick="filterType('all')" class="type-btn active bg-kucrimson text-white text-[11px] font-bold px-3 py-1.5 rounded-lg transition-all">전체</button>
+                        <button onclick="filterType('large')" class="type-btn text-stone-600 hover:text-kucrimson text-[11px] font-bold px-3 py-1.5 rounded-lg transition-all">대기업/중견</button>
+                        <button onclick="filterType('public')" class="type-btn text-stone-600 hover:text-kucrimson text-[11px] font-bold px-3 py-1.5 rounded-lg transition-all">공기업/기관</button>
+                        <button onclick="filterType('foreign')" class="type-btn text-stone-600 hover:text-kucrimson text-[11px] font-bold px-3 py-1.5 rounded-lg transition-all">외국계/해외</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dynamic Company Grid Cards -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4" id="companies-grid">
+                <!-- Javascript will render 30+ mock companies here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Floor Plan Map with Division of labor (School Operated Clinic vs Vendor Booths) -->
+    <section id="floor-plan" class="bg-white py-16 border-b border-stone-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
+            <div class="text-center max-w-2xl mx-auto space-y-2">
+                <span class="bg-rose-50 text-kucrimson font-black text-xs px-3 py-1 rounded-full border border-rose-200/50 uppercase tracking-widest">Interactive Area Map</span>
+                <h3 class="text-2xl font-black text-stone-800">체육관 박람회 부스 동선 가이드</h3>
+                <p class="text-xs text-stone-500">부서 자체 운영 프로그램과 대행업체 부스를 완벽 이원화하여 현장 오안내를 철저히 방지합니다.</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                <!-- Map Showcase Panel (Col 7) -->
+                <div class="lg:col-span-7 bg-[#FAF7F2] p-6 rounded-2xl border border-stone-200/60 shadow-inner relative min-h-[380px] flex items-center justify-center">
+                    <div class="w-full max-w-[500px] h-[300px] relative border-4 border-dashed border-stone-300 rounded-xl bg-white p-4">
+                        <!-- Entrance -->
+                        <div class="absolute bottom-[-16px] left-1/2 transform -translate-x-1/2 bg-stone-800 text-white text-[10px] font-black px-4 py-1.5 rounded-full shadow border-2 border-white z-10">
+                            체육관 주 입구
+                        </div>
+                        
+                        <!-- Zone A: Vendor Operated Enterprise Booths -->
+                        <div class="absolute top-4 left-4 right-4 h-[120px] bg-rose-50/60 border-2 border-kucrimson/50 rounded-xl p-3 flex flex-col justify-between">
+                            <div class="flex justify-between items-center">
+                                <span class="bg-kucrimson text-white text-[9px] font-black px-2 py-0.5 rounded-sm shadow-sm">ZONE A</span>
+                                <span class="text-[9px] text-kucrimson font-black flex items-center gap-1">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-kucrimson animate-ping"></span>
+                                    총 20개 기본 부스
+                                </span>
+                            </div>
+                            <h5 class="text-xs font-black text-stone-800">대행사 운영 및 관리 기업채용상담관 부스 존</h5>
+                            <p class="text-[9px] text-stone-400">대기업, 중견기업, 공공기관 및 외국계 실무인사담당자 1:1 면접 상담 전용</p>
+                            <div class="flex gap-1.5">
+                                <span class="w-5 h-5 bg-kucrimson/10 border border-kucrimson/30 text-kucrimson text-[8px] font-black flex items-center justify-center rounded">1~10</span>
+                                <span class="w-5 h-5 bg-kucrimson/10 border border-kucrimson/30 text-kucrimson text-[8px] font-black flex items-center justify-center rounded">11~20</span>
+                            </div>
+                        </div>
+
+                        <!-- Zone B: School Operated Clinic -->
+                        <div class="absolute bottom-10 left-4 w-[210px] h-[100px] bg-amber-50/60 border-2 border-kugold/50 rounded-xl p-3 flex flex-col justify-between">
+                            <span class="bg-kugold text-kucrimson text-[9px] font-black px-2 py-0.5 rounded-sm self-start shadow-sm">ZONE B</span>
+                            <h5 class="text-xs font-black text-stone-800">진로취업팀 자체 지원 구역</h5>
+                            <p class="text-[9px] text-stone-500">입사지원서·자소서 1:1 전담 밀착 클리닉 (취업팀 상주 컨설턴트 별도 진행)</p>
+                        </div>
+
+                        <!-- Zone C: Event & Services -->
+                        <div class="absolute bottom-10 right-4 w-[210px] h-[100px] bg-emerald-50/60 border-2 border-emerald-500/30 rounded-xl p-3 flex flex-col justify-between">
+                            <span class="bg-emerald-500 text-white text-[9px] font-black px-2 py-0.5 rounded-sm self-start shadow-sm">ZONE C</span>
+                            <h5 class="text-xs font-black text-stone-800">이벤트 및 체험 컨설팅관</h5>
+                            <p class="text-[9px] text-stone-500">퍼스널 컬러, 면접 메이크업, 사진관, 커피트럭 주차 공간</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Division description panel (Col 5) -->
+                <div class="lg:col-span-5 space-y-6">
+                    <h4 class="text-xl font-bold text-stone-800">자체 부서 프로그램과의 동선 이원화 조치</h4>
+                    <p class="text-xs text-stone-500 leading-relaxed">
+                        본 박람회 내의 <strong>'입사지원서 및 자기소개서 클리닉'</strong>은 대학일자리플러스센터 진로취업팀에서 전담하여 별도로 진행합니다. 대행사 부스 라인(Zone A)과 학교 본부 자체 구역(Zone B)을 시각적으로 이원화 구성함으로써 혼선을 방지하고 유기적인 관제를 도출합니다.
+                    </p>
+                    <div class="space-y-3.5">
+                        <div class="flex items-start space-x-3 bg-rose-50/40 p-3 rounded-xl border border-rose-100">
+                            <i class="fa-solid fa-hotel text-kucrimson text-base mt-0.5"></i>
+                            <div>
+                                <span class="text-xs font-black text-stone-800 block">Zone A : 대행사 위탁관리 부스 (20동)</span>
+                                <span class="text-[11px] text-stone-500 leading-normal block mt-1">대기업 및 중견, 공기업 등의 1:1 독립형 채용 면접 면담석</span>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-3 bg-amber-50/40 p-3 rounded-xl border border-amber-200/50">
+                            <i class="fa-solid fa-user-tie text-kugold text-base mt-0.5"></i>
+                            <div>
+                                <span class="text-xs font-black text-stone-800 block">Zone B : 대학 자체 운영관 (진로취업팀 전담)</span>
+                                <span class="text-[11px] text-stone-500 leading-normal block mt-1">예약과 무관하게 자소서, 이력서를 지참한 학생 상시 전문 클리닉</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bottom Area: Information, Legal Consent & Reservation CTA with QR pass widget -->
+    <section class="bg-[#FAF7F2] py-16 border-t border-stone-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-white rounded-3xl p-6 sm:p-10 border border-stone-200/70 shadow-lg grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                <!-- Specs Text (Col 7) -->
+                <div class="lg:col-span-8 space-y-6">
+                    <div class="space-y-2">
+                        <span class="bg-kucrimson text-white text-[10px] font-black px-3 py-1 rounded-md uppercase tracking-wider">Reservation Notice</span>
+                        <h3 class="text-2xl font-black text-stone-800">2026 고려대학교 세종캠퍼스 취업박람회 참가 사전예약</h3>
+                        <p class="text-xs text-stone-500 leading-relaxed">
+                            본 박람회의 사전 예약 시스템은 시간대별/기업별 참가 정원을 엄격히 마감하여 접속 폭주 및 대기 시간을 사전에 예방합니다. 아래 동의 절차를 통해 사전에 접수한 학생에게는 **크림슨 마일리지 15점 가상 적립 및 현장 Gate 간편 Pass**가 발급됩니다.
+                        </p>
+                    </div>
+
+                    <!-- Required Consent Notice -->
+                    <div class="bg-rose-50/40 p-4 rounded-xl border border-rose-100/50 space-y-2">
+                        <div class="text-xs font-black text-kucrimson flex items-center gap-1.5">
+                            <i class="fa-solid fa-user-shield text-sm"></i>
+                            <span>개인정보보호법에 따른 사전 동의 안내</span>
+                        </div>
+                        <p class="text-[10px] text-stone-500 leading-relaxed">
+                            본 박람회 참가 사전 신청은 개인정보보호법에 의거하여 안전하게 관리됩니다. 수집된 인적정보(학번, 성명, 소속 등)는 발주기관의 성과 증빙 및 만족도 분석용 결과보고서 작성 완료 직후 영구 파기 처리됩니다.
+                        </p>
+                    </div>
+
+                    <!-- CTA Action Button (Crimson Background Round) with specific requested label -->
+                    <div class="flex flex-col sm:flex-row items-center gap-3">
+                        <button onclick="openRegisterModal()" class="w-full sm:w-auto bg-kucrimson hover:bg-kucrimsondark text-white font-black text-base sm:text-lg px-8 py-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform active:scale-95 flex items-center justify-center gap-2 pulse-accent-btn">
+                            <span>👉 박람회 참가 및 채용상담 예약 신청하기</span>
+                        </button>
+                        <span class="text-[10px] text-kucrimson font-black bg-[#FAF7F2] border border-rose-200 px-3 py-2 rounded-xl text-center">
+                            <i class="fa-solid fa-circle-exclamation mr-1 animate-pulse"></i>
+                            선착순 2,000명 한정 접수 마감 예정
+                        </span>
+                    </div>
+                </div>
+
+                <!-- QR Gate Pass Widget Showcase (Col 4) -->
+                <div class="lg:col-span-4 bg-stone-50 p-6 rounded-2xl border border-stone-200 flex flex-col items-center justify-center text-center space-y-4">
+                    <span class="text-[9px] text-stone-400 font-bold uppercase tracking-widest">Digital Gate Pass</span>
+                    
+                    <!-- Dynamic Live User Seat Indicator to simulate server traffic control -->
+                    <div class="bg-white p-4 rounded-xl border border-stone-200 shadow-sm w-full space-y-2.5">
+                        <div class="flex justify-between items-center text-xs">
+                            <span class="font-bold text-stone-700">실시간 누적 사전 접수</span>
+                            <span class="font-black text-kucrimson">1,684명 / 2,000명</span>
+                        </div>
+                        <!-- Progress bar -->
+                        <div class="w-full h-2 bg-stone-100 rounded-full overflow-hidden">
+                            <div class="h-full bg-gradient-to-r from-kucrimson to-kugold rounded-full" style="width: 84.2%"></div>
+                        </div>
+                        <div class="text-[9px] text-stone-400">
+                            * 트래픽 관리를 위해 순차적 분산 오픈 조치가 수립되어 적용됩니다.
+                        </div>
+                    </div>
+
+                    <!-- Direct Check Entry Ticket Preview link -->
+                    <button onclick="scrollToMyPass()" class="text-xs text-kucrimson font-bold hover:underline flex items-center gap-1">
+                        <i class="fa-solid fa-id-card"></i>
+                        <span>발급 완료된 나의 모바일 Pass 조회</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- My Page Gateway Ticket Section (User-centric Digital Pass) -->
+    <section id="my-pass" class="bg-white py-16 border-b border-stone-200/60">
+        <div class="max-w-md mx-auto px-4 text-center space-y-6">
+            <div class="space-y-1">
+                <h4 class="text-xl font-black text-stone-800">나의 모바일 간편 체크인 PASS</h4>
+                <p class="text-xs text-stone-500">사전신청 완료 직후 자동으로 발급되는 현장 출입 및 스탬프 투어 모바일 티켓입니다.</p>
+            </div>
+
+            <!-- Virtual Ticket UI Component -->
+            <div class="bg-[#FAF7F2] border-2 border-kucrimson rounded-3xl overflow-hidden shadow-xl" id="ticket-card">
+                <!-- Ticket Header -->
+                <div class="bg-kucrimson p-4 text-white flex justify-between items-center">
+                    <div class="flex items-center space-x-2">
+                        <span class="font-serif font-black tracking-wider text-xs">KU</span>
+                        <span class="text-[10px] bg-kugold text-kucrimson font-bold px-2 py-0.5 rounded-sm">사전접수 완료</span>
+                    </div>
+                    <span class="text-[10px] text-stone-200" id="pass-serial">NO. 2026-SEJONG-XXXX</span>
+                </div>
+
+                <!-- Ticket Content -->
+                <div class="p-6 space-y-4 text-left bg-white">
+                    <div id="ticket-details" class="space-y-3">
+                        <div class="text-center py-6 text-stone-400 text-xs border border-dashed border-stone-200 rounded-xl bg-stone-50">
+                            <i class="fa-solid fa-lock text-3xl text-stone-300 mb-2"></i>
+                            <p>박람회 참가 신청 완료 즉시<br>본인 정보와 동적 QR코드가 생성 활성화됩니다.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ticket Footer (e-Stamp rule checklist) -->
+                <div class="bg-stone-50 p-4 border-t border-dashed border-stone-200 text-xs text-stone-500 text-left space-y-1.5">
+                    <div class="flex justify-between font-bold text-stone-800">
+                        <span>체육관 스탬프 현황:</span>
+                        <span id="stamp-counter" class="text-kucrimson">0 / 3 완수</span>
+                    </div>
+                    <div class="w-full h-1.5 bg-stone-200 rounded-full overflow-hidden">
+                        <div id="stamp-progress" class="h-full bg-kugold" style="width: 0%"></div>
+                    </div>
+                    <p class="text-[9px] text-stone-400 mt-1 leading-normal">
+                        * 3개 부스 이상 참석 스탬프 도달 시, 종료 후 '크림슨 마일리지 15점'이 자동 전산 승인되어 부여 처리됩니다.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portal Footer -->
+    <footer class="bg-kucrimson text-rose-100 text-xs py-8 border-t border-kugold/40">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-4">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-4 border-b border-white/10 pb-6">
+                <div class="flex items-center space-x-3">
+                    <div class="bg-white p-1.5 rounded-lg shrink-0">
+                        <span class="text-kucrimson font-serif font-black tracking-widest text-xs px-1">KU</span>
+                    </div>
+                    <div>
+                        <p class="font-bold text-white text-xs">고려대학교 세종캠퍼스 대학일자리플러스센터 (취창업지원센터)</p>
+                        <p class="text-[9px] text-rose-200">세종특별자치시 세종로 2511 고려대학교 학생회관 2층</p>
+                    </div>
+                </div>
+                <div class="text-[10px] text-stone-300 text-center md:text-right">
+                    <p>대표연락처: 044-860-1092 (취창업지원센터 전현택 담당)</p>
+                    <p>본 박람회 사업은 2026년 세종특별자치시 지역 RISE 사업 연계 제도로 구동됩니다.</p>
+                </div>
+            </div>
+            <p class="text-[10px] text-rose-300/60 text-center md:text-left">
+                © 2026 KOREA UNIVERSITY SEJONG CAMPUS. ALL RIGHTS RESERVED.
+            </p>
+        </div>
+    </footer>
+
+    <!-- Multi-Step Interactive Booking & Privacy Consent Modal Component -->
+    <div id="register-modal" class="fixed inset-0 bg-stone-950/70 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+        <div class="bg-white rounded-3xl max-w-lg w-full overflow-hidden shadow-2xl border border-stone-200 transform scale-95 transition-all duration-300" id="modal-container">
+            
+            <!-- Modal Header banner -->
+            <div class="bg-gradient-to-r from-kucrimsondark to-kucrimson text-white p-6 relative">
+                <button onclick="closeRegisterModal()" class="absolute top-4 right-4 text-white/80 hover:text-white text-xl">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+                <span class="text-[9px] bg-kugold text-kucrimson font-black px-2.5 py-0.5 rounded-sm uppercase tracking-wider">CRIMSON MILEAGE SYSTEM</span>
+                <h3 class="text-lg font-bold mt-2">고려대학교 세종캠퍼스 박람회 간편 사전신청</h3>
+                <p class="text-xs text-rose-200 mt-1">예약 정보 및 출입용 모바일 QR Gate Pass 발급 즉시 마일리지 선등록 처리</p>
+            </div>
+
+            <!-- Modal Content Form Area (Step 1: REQUIRED PRIVACY CONSENT) -->
+            <div class="p-6 space-y-4" id="modal-step-1">
+                <div class="space-y-3">
+                    <h4 class="text-sm font-bold text-stone-800 flex items-center gap-1">
+                        <i class="fa-solid fa-shield-halved text-kucrimson"></i>
+                        <span>[필수] 개인정보 수집 및 성과추적 활용 동의</span>
+                    </h4>
+                    
+                    <div class="border border-stone-200 rounded-xl p-3 bg-stone-50 text-[10px] text-stone-500 h-[150px] overflow-y-auto space-y-2 leading-relaxed">
+                        <p class="font-bold text-stone-700">[고려대학교 세종산학협력단 / 취창업지원센터 수집 동의 조항]</p>
+                        <p>1. 개인정보 수집목적: 2026 고려대학교 세종캠퍼스 취업박람회 참가자 등록, 사전 시간대 매칭 통계화, 사후 만족도 메일 발송 및 크림슨 마일리지 부여 적격 대조.</p>
+                        <p>2. 수집항목: 성명, 학번, 소속 학과, 학년, 학적(재학/휴학/졸업 등), 전화번호, 메일, 성별, 관심 지원 도메인 등.</p>
+                        <p>3. 보유 및 이용기간: 행사 참가 통계 정산 및 결과보고서 제출 후 3년 (법령 기준 준수 후 영구 소멸 파기).</p>
+                        <p>4. 동의 거부 시 불이익: 본 동의는 행사 참여 분석 및 증빙에 필수적이므로 동의를 거부하실 경우 사전 예약 및 혜택 부여가 불가능합니다.</p>
+                    </div>
+
+                    <div class="flex items-start space-x-2.5 bg-[#FAF7F2] p-3 rounded-xl border border-rose-100">
+                        <input type="checkbox" id="consent-check" class="mt-0.5 rounded text-kucrimson focus:ring-kucrimson cursor-pointer">
+                        <label for="consent-check" class="text-[11px] text-stone-600 leading-normal cursor-pointer font-bold">
+                            위의 법령상 조치 및 개인(민감)정보 수집·이용, 제3자 제공 가이드라인을 충분히 확인하였으며 이에 동의합니다.
+                        </label>
+                    </div>
+                </div>
+
+                <button onclick="goToFormStep()" class="w-full bg-kucrimson hover:bg-kucrimsondark text-white font-black py-3 rounded-2xl shadow-lg transition-transform transform active:scale-95 text-xs sm:text-sm flex items-center justify-center gap-2">
+                    <span>다음 단계로 이동 (정보 입력)</span>
+                    <i class="fa-solid fa-arrow-right-long"></i>
+                </button>
+            </div>
+
+            <!-- Modal Content Form Area (Step 2: DATA INPUT) -->
+            <div class="p-6 space-y-4 hidden" id="modal-step-2">
+                <div class="space-y-3.5">
+                    <div>
+                        <label class="text-xs font-bold text-stone-600 block mb-1">성명 (실명)</label>
+                        <input type="text" id="user-name" placeholder="고대인" class="w-full text-xs border border-stone-200 rounded-xl px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-kucrimson">
+                    </div>
+                    
+                    <div class="grid grid-cols-2 gap-3">
+                        <div>
+                            <label class="text-xs font-bold text-stone-600 block mb-1">학번 (또는 청년인증번호)</label>
+                            <input type="text" id="user-student-id" placeholder="2026123456" class="w-full text-xs border border-stone-200 rounded-xl px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-kucrimson">
+                        </div>
+                        <div>
+                            <label class="text-xs font-bold text-stone-600 block mb-1">학적 구분</label>
+                            <select id="user-status" class="w-full text-xs border border-stone-200 rounded-xl px-3 py-2.5 bg-white focus:ring-2 focus:ring-kucrimson">
+                                <option value="재학생">재학생</option>
+                                <option value="휴학생">휴학생</option>
+                                <option value="수료생">수료생</option>
+                                <option value="미취업 졸업생">미취업 졸업생</option>
+                                <option value="세종 지역청년">세종 지역청년</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="text-xs font-bold text-stone-600 block mb-1">소속 단과대학 / 학과명</label>
+                        <input type="text" id="user-department" placeholder="글로벌비즈니스대학 경영학부" class="w-full text-xs border border-stone-200 rounded-xl px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-kucrimson">
+                    </div>
+
+                    <!-- Company Spot Scheduler Reservation Selection with Real-time traffic controls -->
+                    <div>
+                        <label class="text-xs font-bold text-stone-600 block mb-1">1:1 집중 채용상담 희망기업 & 예약 타임라인</label>
+                        <select id="user-reserved-spot" class="w-full text-xs border border-stone-200 rounded-xl px-3 py-2.5 bg-white focus:ring-2 focus:ring-kucrimson">
+                            <option value="삼성SDI (배터리 설계) | 09/07 13:00 - 13:30">삼성SDI (배터리 설계) | 09/07 13:00 - 13:30 (잔여 2석)</option>
+                            <option value="SK하이닉스 (HBM 공정) | 09/07 14:00 - 14:30">SK하이닉스 (HBM 공정) | 09/07 14:00 - 14:30 (잔여 1석)</option>
+                            <option value="세종도시교통공사 (인사행정) | 09/08 11:00 - 11:30">세종도시교통공사 (인사행정) | 09/08 11:00 - 11:30 (잔여 4석)</option>
+                            <option value="한화솔루션 (그린에너지 부서) | 09/08 15:00 - 15:30">한화솔루션 (그린에너지 부서) | 09/08 15:00 - 15:30 (잔여 3석)</option>
+                        </select>
+                    </div>
+
+                    <!-- Pre-registration Badge Warning -->
+                    <div class="bg-rose-50 border border-rose-200 rounded-xl p-3 text-center">
+                        <p class="text-[10px] font-black text-kucrimson leading-normal">
+                            <i class="fa-solid fa-gift text-kugold animate-bounce mr-1"></i>
+                            # 사전신청 후, 박람회 참여시 e-STAMP 1개 자동추가 가상적립 완료!
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Action Triggers -->
+                <button onclick="submitPreRegistration()" class="w-full bg-kucrimson hover:bg-kucrimsondark text-white font-black py-3 rounded-2xl shadow-lg transition-transform transform active:scale-95 text-xs sm:text-sm flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-stamp text-kugold"></i>
+                    <span>사전 접수 완료 & 모바일 PASS 발급</span>
+                </button>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Live Floating Notification Toast component -->
+    <div id="toast-message" class="fixed bottom-6 right-6 z-50 transform translate-y-24 opacity-0 transition-all duration-300 pointer-events-none">
+        <div class="bg-stone-800 text-white rounded-2xl px-5 py-3 shadow-2xl border border-stone-700 flex items-center space-x-3">
+            <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-ping"></span>
+            <span class="text-xs font-bold" id="toast-text">정보가 성공적으로 수정되었습니다.</span>
+        </div>
+    </div>
+
+    <!-- Custom Interaction Engine and 30+ Companies data registry -->
+    <script>
+        // High fidelity mock data representing 30+ Companies in Sejong region & national large groups
+        const mockCompanies = [
+            { id: 1, name: "삼성SDI", type: "large", field: "배터리 연구개발 및 공정 설계", location: "체육관 Booth 01", slots: "D-Day 13:00 - 13:30 (2석 남음)" },
+            { id: 2, name: "SK하이닉스", type: "large", field: "HBM 메모리 연구 및 하프웨어 생산", location: "체육관 Booth 02", slots: "D-Day 14:00 - 14:30 (1석 남음)" },
+            { id: 3, name: "한화솔루션", type: "large", field: "그린에너지 모듈 제조 및 기획", location: "체육관 Booth 03", slots: "D-Day 15:00 - 15:30 (3석 남음)" },
+            { id: 4, name: "세종도시교통공사", type: "public", field: "지역 스마트 모빌리티 기획 및 재무행정", location: "체육관 Booth 04", slots: "9/8 11:00 - 11:30 (4석 남음)" },
+            { id: 5, name: "CJ제일제당", type: "large", field: "바이오 신약 가치 사슬 가동 및 마케팅", location: "체육관 Booth 05", slots: "9/8 14:00 - 14:30 (마감)" },
+            { id: 6, name: "한국전력공사", type: "public", field: "지속 가능한 에너지 전략 및 전력 마케팅", location: "체육관 Booth 06", slots: "D-Day 10:30 - 11:00 (5석 남음)" },
+            { id: 7, name: "ASML Korea", type: "foreign", field: "EUV 노광 시스템 기술 지원 및 CS 엔지니어", location: "체육관 Booth 07", slots: "9/8 15:30 - 16:00 (2석 남음)" },
+            { id: 8, name: "국민건강보험공단", type: "public", field: "사회보장 행정 실무 및 빅데이터 정책 기획", location: "체육관 Booth 08", slots: "D-Day 11:30 - 12:00 (1석 남음)" },
+            { id: 9, name: "이케아 코리아", type: "foreign", field: "인테리어 설계 디자인 및 공급망 관리", location: "체육관 Booth 09", slots: "D-Day 16:00 - 16:30 (4석 남음)" },
+            { id: 10, name: "세종특별자치시청", type: "public", field: "지역 청년 일자리 정책 수립 부서 지원 및 상담", location: "체육관 Booth 10", slots: "9/8 10:00 - 10:30 (상시)" },
+            { id: 11, name: "유한양행", type: "large", field: "신약 연구 개발 임상 부서 및 영업 관리", location: "체육관 Booth 11", slots: "D-Day 14:30 - 15:00 (3석 남음)" },
+            { id: 12, name: "LG에너지솔루션", type: "large", field: "배터리 전극 제조 엔지니어링 및 해외 생산 조율", location: "체육관 Booth 12", slots: "9/8 13:30 - 14:00 (2석 남음)" },
+            { id: 13, name: "네이버 클라우드", type: "large", field: "데이터 센터 AI 솔루션 기획 및 기술 상담", location: "체육관 Booth 13", slots: "D-Day 15:30 - 16:00 (1석 남음)" },
+            { id: 14, name: "한국생명공학연구원", type: "public", field: "유전체 정보 빅데이터 플랫폼 보조 분석가", location: "체육관 Booth 14", slots: "9/8 14:30 - 15:00 (5석 남음)" },
+            { id: 15, name: "쿠팡", type: "large", field: "풀필먼트 물류 최적화 솔루션 및 테크 매니저", location: "체육관 Booth 15", slots: "D-Day 11:00 - 11:30 (마감)" },
+            { id: 16, name: "존슨앤드존슨", type: "foreign", field: "메디컬 기기 품질 혁신 검증 및 마케팅", location: "체육관 Booth 16", slots: "9/8 16:00 - 16:30 (2석 남음)" },
+            { id: 17, name: "세종테크노파크", type: "public", field: "스마트 공장 구축 지원 사업 및 지역 융합 기획", location: "체육관 Booth 17", slots: "D-Day 16:30 - 17:00 (상시)" },
+            { id: 18, name: "현대자동차", type: "large", field: "차세대 수소 모빌리티 동력 제어 공정 설계", location: "체육관 Booth 18", slots: "9/8 13:00 - 13:30 (1석 남음)" },
+            { id: 19, name: "인텔코리아", type: "foreign", field: "글로벌 하드웨어 판매 전략 및 시스템 엔지니어", location: "체육관 Booth 19", slots: "D-Day 10:00 - 10:30 (3석 남음)" },
+            { id: 20, name: "한국수자원공사", type: "public", field: "스마트 워터 그리드 수질 관리 시스템 운용", location: "체육관 Booth 20", slots: "9/8 11:30 - 12:00 (4석 남음)" },
+            { id: 21, name: "CJ ENM", type: "large", field: "글로벌 콘텐츠 제작 배급 유통 및 공연 마케팅", location: "체육관 Booth 21", slots: "D-Day 14:00 - 14:30 (마감)" },
+            { id: 22, name: "지멘스 헬시니어스", type: "foreign", field: "의료 영상 진단 기기 기계 정비 서비스 지원", location: "체육관 Booth 22", slots: "9/8 14:00 - 14:30 (2석 남음)" },
+            { id: 23, name: "한국과학기술연구원(KIST)", type: "public", field: "차세대 나노 복합 소재 보조 연구직 선발", location: "체육관 Booth 23", slots: "D-Day 15:00 - 15:30 (3석 남음)" },
+            { id: 24, name: "구글코리아", type: "foreign", field: "클라우드 서비스 마케팅 및 테크니컬 지원팀", location: "체육관 Booth 24", slots: "9/8 15:00 - 15:30 (마감)" },
+            { id: 25, name: "아모레퍼시픽", type: "large", field: "코스메틱 패키징 마케팅 및 상품 기획 브랜딩", location: "체육관 Booth 25", slots: "D-Day 13:30 - 14:00 (2석 남음)" },
+            { id: 26, name: "세종상공회의소", type: "public", field: "지역 강소기업 활성화 지원 및 인사 관리 상담", location: "체육관 Booth 26", slots: "9/8 10:30 - 11:00 (상시)" },
+            { id: 27, name: "한국가스공사", type: "public", field: "그린 수소 터미널 인프라 안전 관리 및 사무", location: "체육관 Booth 27", slots: "D-Day 16:00 - 16:30 (4석 남음)" },
+            { id: 28, name: "DHL 코리아", type: "foreign", field: "특송 네트워크 물류 조율 및 포트폴리오 관리", location: "체육관 Booth 28", slots: "9/8 11:00 - 11:30 (3석 남음)" },
+            { id: 29, name: "신세계", type: "large", field: "스마트 유통 라이프 스타일 MD 및 입사 안내", location: "체육관 Booth 29", slots: "D-Day 11:30 - 12:00 (1석 남음)" },
+            { id: 30, name: "한국교통안전공단", type: "public", field: "스마트 도로 안전 진단 실무 및 관제 시스템", location: "체육관 Booth 30", slots: "9/8 15:30 - 16:00 (2석 남음)" }
+        ];
+
+        let currentFilterType = "all";
+
+        // Initial setup and loading mock directory data on startup
+        window.onload = function() {
+            renderCompanies();
+        };
+
+        // Render company items dynamically with correct filters and visual badges
+        function renderCompanies() {
+            const container = document.getElementById("companies-grid");
+            const searchQuery = document.getElementById("search-company").value.toLowerCase();
+            
+            let filtered = mockCompanies;
+            if (currentFilterType !== "all") {
+                filtered = filtered.filter(item => item.type === currentFilterType);
+            }
+            if (searchQuery) {
+                filtered = filtered.filter(item => 
+                    item.name.toLowerCase().includes(searchQuery) || 
+                    item.field.toLowerCase().includes(searchQuery)
+                );
+            }
+
+            let html = "";
+            if (filtered.length === 0) {
+                html = `
+                    <div class="col-span-full py-12 text-center text-stone-400 text-xs">
+                        <i class="fa-solid fa-rectangle-xmark text-4xl mb-3 block"></i>
+                        <span>조건에 부합하는 참가기업 정보가 존재하지 않습니다.</span>
+                    </div>
+                `;
+            } else {
+                filtered.forEach(company => {
+                    let typeBadge = "";
+                    let typeColor = "";
+                    switch(company.type) {
+                        case "large": typeBadge = "대기업/중견"; typeColor = "bg-rose-50 text-kucrimson"; break;
+                        case "public": typeBadge = "공공/공기업"; typeColor = "bg-amber-50 text-amber-800"; break;
+                        case "foreign": typeBadge = "외국계/해외"; typeColor = "bg-blue-50 text-blue-700"; break;
+                    }
+
+                    html += `
+                        <div class="bg-white p-5 rounded-2xl border border-stone-200 hover:border-kucrimson hover:shadow-lg transition-all flex flex-col justify-between space-y-4">
+                            <div class="space-y-2">
+                                <div class="flex justify-between items-center">
+                                    <span class="text-[9px] font-black px-2 py-0.5 rounded ${typeColor}">${typeBadge}</span>
+                                    <span class="text-[10px] text-stone-400 font-mono">${company.location}</span>
+                                </div>
+                                <h4 class="font-extrabold text-sm text-stone-800">${company.name}</h4>
+                                <p class="text-[11px] text-stone-500 leading-normal line-clamp-2">${company.field}</p>
+                            </div>
+                            <div class="border-t border-stone-100 pt-3 flex flex-col space-y-2">
+                                <span class="text-[10px] text-stone-400 block font-mono"><i class="fa-regular fa-clock mr-1"></i>${company.slots}</span>
+                                <button onclick="selectDirectCompany('${company.name} | ${company.slots}')" class="w-full bg-[#FAF7F2] hover:bg-kucrimson hover:text-white text-kucrimson text-[11px] font-extrabold py-2 rounded-xl transition-all border border-rose-200/40">
+                                    일대일 상담 신청
+                                </button>
+                            </div>
+                        </div>
+                    `;
+                });
+            }
+            container.innerHTML = html;
+        }
+
+        // Filter button controller
+        function filterType(type) {
+            currentFilterType = type;
+            document.querySelectorAll(".type-btn").forEach(btn => {
+                btn.classList.remove("active", "bg-kucrimson", "text-white");
+                btn.classList.add("text-stone-600", "hover:text-kucrimson");
+            });
+            event.currentTarget.classList.remove("text-stone-600", "hover:text-kucrimson");
+            event.currentTarget.classList.add("active", "bg-kucrimson", "text-white");
+            renderCompanies();
+        }
+
+        function filterCompanies() {
+            renderCompanies();
+        }
+
+        // Direct company selection linkage to modal input
+        function selectDirectCompany(info) {
+            openRegisterModal();
+            // Wait for modal components step to activate then change option index
+            goToFormStep();
+            const selectEl = document.getElementById("user-reserved-spot");
+            
+            // Generate temporary option or find match
+            let found = false;
+            for(let i=0; i<selectEl.options.length; i++) {
+                if(selectEl.options[i].value.includes(info.split(' | ')[0])) {
+                    selectEl.selectedIndex = i;
+                    found = true;
+                    break;
+                }
+            }
+            if(!found) {
+                const newOpt = document.createElement("option");
+                newOpt.value = info;
+                newOpt.text = `${info} (선택 예약됨)`;
+                selectEl.add(newOpt);
+                selectEl.value = info;
+            }
+        }
+
+        // Modal Controls
+        function openRegisterModal() {
+            const modal = document.getElementById('register-modal');
+            modal.classList.remove('hidden');
+            document.getElementById('modal-step-1').classList.remove('hidden');
+            document.getElementById('modal-step-2').classList.add('hidden');
+            document.getElementById('consent-check').checked = false;
+            setTimeout(() => {
+                document.getElementById('modal-container').classList.remove('scale-95');
+                document.getElementById('modal-container').classList.add('scale-100');
+            }, 50);
+        }
+
+        function closeRegisterModal() {
+            document.getElementById('modal-container').classList.remove('scale-100');
+            document.getElementById('modal-container').classList.add('scale-95');
+            setTimeout(() => {
+                document.getElementById('register-modal').classList.add('hidden');
+            }, 200);
+        }
+
+        function goToFormStep() {
+            const consentChecked = document.getElementById('consent-check').checked;
+            if(!consentChecked) {
+                showToast("필수 개인정보 보호 정책에 먼저 동의해주셔야 다음 전형 진행이 가능합니다.");
+                return;
+            }
+            document.getElementById('modal-step-1').classList.add('hidden');
+            document.getElementById('modal-step-2').classList.remove('hidden');
+        }
+
+        // Submit and Generate Gate Pass Ticket dynamically
+        function submitPreRegistration() {
+            const name = document.getElementById("user-name").value;
+            const studentId = document.getElementById("user-student-id").value;
+            const dept = document.getElementById("user-department").value;
+            const spot = document.getElementById("user-reserved-spot").value;
+            const status = document.getElementById("user-status").value;
+
+            if(!name || !studentId || !dept) {
+                showToast("실명 및 소속 학과, 학번 정보 요소를 온전히 입력하셔야 발급이 완료됩니다.");
+                return;
+            }
+
+            // Simulate barcode generation and data mapping
+            const serial = `NO. ${studentId.substring(0,4)}-SEJONG-${Math.floor(Math.random() * 90000 + 10000)}`;
+            const ticketCard = document.getElementById("ticket-details");
+
+            // Update ticket card to active status
+            ticketCard.innerHTML = `
+                <div class="space-y-4 animate-fade-in">
+                    <!-- Dynamic Simulated entry Pass QR Code vector graphic -->
+                    <div class="bg-stone-50 p-4 rounded-xl border border-stone-200 text-center flex flex-col items-center">
+                        <svg viewBox="0 0 100 100" class="w-28 h-28 mx-auto">
+                            <!-- Realistically rendered QR design blocks using SVG vectors -->
+                            <rect width="100" height="100" fill="#ffffff"/>
+                            <!-- Corners -->
+                            <rect x="5" y="5" width="25" height="25" fill="#8A1538" stroke="#ffffff" stroke-width="2"/>
+                            <rect x="10" y="10" width="15" height="15" fill="#ffffff"/>
+                            <rect x="13" y="13" width="9" height="9" fill="#8A1538"/>
+
+                            <rect x="70" y="5" width="25" height="25" fill="#8A1538" stroke="#ffffff" stroke-width="2"/>
+                            <rect x="75" y="10" width="15" height="15" fill="#ffffff"/>
+                            <rect x="78" y="13" width="9" height="9" fill="#8A1538"/>
+
+                            <rect x="5" y="70" width="25" height="25" fill="#8A1538" stroke="#ffffff" stroke-width="2"/>
+                            <rect x="10" y="75" width="15" height="15" fill="#ffffff"/>
+                            <rect x="13" y="78" width="9" height="9" fill="#8A1538"/>
+                            
+                            <!-- Random noise grid matrix -->
+                            <rect x="35" y="10" width="5" height="15" fill="#8A1538"/>
+                            <rect x="45" y="5" width="10" height="5" fill="#C49A45"/>
+                            <rect x="60" y="20" width="5" height="5" fill="#1A0307"/>
+                            <rect x="35" y="35" width="15" height="5" fill="#1A0307"/>
+                            <rect x="55" y="35" width="5" height="15" fill="#8A1538"/>
+                            <rect x="10" y="45" width="15" height="10" fill="#C49A45"/>
+                            <rect x="40" y="55" width="10" height="5" fill="#8A1538"/>
+                            <rect x="35" y="70" width="10" height="15" fill="#1A0307"/>
+                            <rect x="50" y="80" width="25" height="10" fill="#8A1538"/>
+                            <rect x="80" y="40" width="15" height="15" fill="#1A0307"/>
+                            <rect x="85" y="65" width="10" height="20" fill="#C49A45"/>
+                        </svg>
+                        <span class="text-[9px] text-stone-400 font-bold tracking-widest mt-2 uppercase font-mono">${serial}</span>
+                    </div>
+
+                    <!-- User Detail Specifications -->
+                    <div class="space-y-1.5 text-xs">
+                        <div class="flex justify-between border-b border-stone-100 pb-1.5">
+                            <span class="text-stone-400">참석 구직자:</span>
+                            <span class="font-bold text-stone-800">${name} (학적: ${status})</span>
+                        </div>
+                        <div class="flex justify-between border-b border-stone-100 pb-1.5">
+                            <span class="text-stone-400">소속 전산:</span>
+                            <span class="font-bold text-stone-800 text-right">${dept} / ${studentId}</span>
+                        </div>
+                        <div class="flex justify-between border-b border-stone-100 pb-1.5">
+                            <span class="text-stone-400">예약한 1:1 상담:</span>
+                            <span class="font-bold text-kucrimson text-right">${spot.split(' | ')[0]}</span>
+                        </div>
+                        <div class="flex justify-between border-b border-stone-100 pb-1.5">
+                            <span class="text-stone-400">상담 배정시각:</span>
+                            <span class="font-bold text-kugold text-right">${spot.split(' | ')[1]}</span>
+                        </div>
+                        <div class="flex justify-between border-b border-stone-100 pb-1.5">
+                            <span class="text-stone-400">크림슨 마일리지:</span>
+                            <span class="font-bold text-kucrimson">15점 자동 적립 대기</span>
+                        </div>
+                        <div class="flex justify-between text-kucrimson font-bold text-[11px] pt-1.5 bg-rose-50/50 p-2.5 rounded-lg border border-rose-100/40">
+                            <span>* 혜택 확인 특전:</span>
+                            <span>e-STAMP 1개 가상 적립완료 <i class="fa-solid fa-stamp text-kugold ml-0.5"></i></span>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            // Active ticket settings
+            document.getElementById("pass-serial").innerText = serial;
+            document.getElementById("stamp-counter").innerText = "1 / 3 완수 (사전 1개 자동)";
+            document.getElementById("stamp-progress").style.width = "33.3%";
+
+            closeRegisterModal();
+            showToast("사전 참가등록 및 모바일 Gate Pass 발급이 성공적으로 반영되었습니다!");
+            scrollToMyPass();
+        }
+
+        // Slide viewport to gate ticket card smoothly
+        function scrollToMyPass() {
+            document.getElementById("my-pass").scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Show Toast system helper
+        function showToast(text) {
+            const toast = document.getElementById("toast-message");
+            document.getElementById("toast-text").innerText = text;
+            
+            toast.classList.remove("opacity-0", "translate-y-24", "pointer-events-none");
+            toast.classList.add("opacity-100", "translate-y-0");
+
+            setTimeout(() => {
+                toast.classList.remove("opacity-100", "translate-y-0");
+                toast.classList.add("opacity-0", "translate-y-24", "pointer-events-none");
+            }, 3500);
+        }
+    </script>
+</body>
+</html>
